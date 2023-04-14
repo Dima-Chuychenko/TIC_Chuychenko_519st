@@ -106,8 +106,8 @@ def lossless_comp():
     aray = []
     letters = [str(i) for i in last_name_and_group]
     n_letters = len(letters)
-    n_repeats = n_sequence / n_letters
-    remainder = n_sequence * (n_sequence % n_letters)
+    n_repeats = n_sequence // n_letters
+    remainder = n_sequence % n_letters
     aray += letters * int(n_repeats)
     aray += letters[:remainder]
 
