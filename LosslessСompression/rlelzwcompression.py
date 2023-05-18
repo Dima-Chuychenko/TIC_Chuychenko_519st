@@ -3,7 +3,7 @@ import collections
 import math
 from matplotlib import pyplot as plt
 
-open("results_rle_lzw.txt", "w")
+open("results_rle_lzw.txt", "w", encoding='utf-8')
 results = []
 N_sequence = 100
 
