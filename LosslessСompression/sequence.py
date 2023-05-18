@@ -32,10 +32,10 @@ def lossless_comp():
     def output():
         text = open('results_sequence.txt', 'a')
         text.write(f'Ймовірність появи символів: {probability_str}\n')
-        text.write(f'Середнє арифметичне ймовірності: {mean_probability}\n')
+        text.write(f'Середнє арифметичне ймовірності: {round(mean_probability, 2)}\n')
         text.write(f'Ймовірність розподілу символів: {uniformity}\n')
-        text.write(f'Ентропія: {entropy}\n')
-        text.write(f'Надмірність джерела: {source_excess}\n')
+        text.write(f'Ентропія: {round(entropy, 2)}\n')
+        text.write(f'Надмірність джерела: {round(source_excess, 2)}\n')
         text.write('\n')
 
     text = open('results_sequence.txt', 'w')

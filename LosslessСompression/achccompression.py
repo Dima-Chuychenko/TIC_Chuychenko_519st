@@ -16,7 +16,7 @@ def main():
         counts = collections.Counter(sequence)
         probability = {symbol: count / sequence_length for symbol, count in counts.items()}
         entropy = -sum(p * math.log2(p) for p in probability.values())
-        file = open("results_AC_CH.txt", "w")
+        file = open("results_AC_CH.txt", "a")
         file.write(f'/' * 100)
         file.write(f'\nОригінальна послідовність: {sequence}\n')
         file.write(f'Ентропія: {entropy}\n')

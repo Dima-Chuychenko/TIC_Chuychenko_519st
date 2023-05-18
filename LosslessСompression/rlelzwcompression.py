@@ -24,7 +24,7 @@ def main():
         file.write("////////////////////////////////////////////////\n"
                    "Оригінальна послідовність: {0}\n".format(str(row)) +
                    "Розмір оригінальної послідовності: {0} bits\n".format(str(len(row) * 16)) +
-                   "Ентропія: {0}\n".format(str(entropy)))
+                   "Ентропія: {0}\n".format(str(round(entropy, 2))))
         file.close()
 
         encoded_sequence, encoded = encode_rle(row)
@@ -40,7 +40,7 @@ def main():
         file = open("results_rle_lzw.txt", "a")
         file.write("\n__________Кодування_RLE__________\n" +
                    "Закодована RLE послідовність: " + str(encoded_sequence) + "\n"
-                   "Розмір закодованої RLE послідовності: " + str(coded_sequence_size) + " bits\n"
+                   "Розмір закодованої RLE послідовності: " + str(round(coded_sequence_size, 2)) + " bits\n"
                    "Коефіцієнт стиснення RLE: " + str(compression_ratio_rle) + "\n"
                    "Декодована RLE послідовність: " + str(decoded_sequence) + "\n"
                    "Розмір декодованої RLE послідовності: " + str(len(decoded_sequence) * 16) + " bits\n")
@@ -57,7 +57,7 @@ def main():
 
             compression_ratio_lzw = round((len(row) * 16 / size), 2)
 
-            file.write(f"Коефіціент стиснення LZW: {compression_ratio_lzw} \n")
+            file.write(f"Коефіціент стиснення LZW: {round(compression_ratio_lzw, 2)} \n")
 
         decoded_result_lzw = decode_lzw(encoded_result)
         with open("results_rle_lzw.txt", "a") as file:
