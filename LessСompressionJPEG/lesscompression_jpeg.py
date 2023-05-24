@@ -230,7 +230,7 @@ def encode(output_f: str, input_f: str, table_num: int):
         'dc_c': H_DC_C.value_to_bitstring_table(),
         'ac_c': H_AC_C.value_to_bitstring_table()}
     size_vyhsdnogo = os.path.getsize(input_file)
-    with open("results_jpeg.txt", "w", encoding="utf8") as file:
+    with open("results_jpeg.txt", "a", encoding="utf8") as file:
         print(f'Таблиця квантування - {table_num}, зображення - {input_f} \n'
               f'Розмір вихідного файла: {size_vyhsdnogo} байт', file=file)
     write_to_file(f"compression/{output_file}", dc, ac, blocks_count, tables)
@@ -385,7 +385,7 @@ def decoder(output_f: str, input_f: str, table_num: int, size_f: int):
     width, height = image.size
     ratio = size_f / size_jpeg
     with open("results_jpeg.txt", "a", encoding="utf8") as file:
-        print('Розмір файла JPEG: {} байт'.format(size_jpeg), '\n',
+        print(f'Розмір файла JPEG: {size_jpeg} байт\n',
               f'Розмір зображення JPEG: {width}x{height}\n',
               f'Коефіцієнт стиснення= {round(ratio, 2)}\n', file=file)
 
