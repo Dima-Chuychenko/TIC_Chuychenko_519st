@@ -56,11 +56,11 @@ def getSetCheckBits(value_bin):
 def getCheckBits(value_bin):
     """Отримання інформації про контрольні біти з бінарного блоку даних при
    декодуванні"""
-    value_bin = getSetEmptyCheckBits(value_bin)
-    check_bits_data = getCheckBitsData(value_bin)
-    for check_bit, bit_value in check_bits_data.items():
-        value_bin = '{0}{1}{2}'.format(value_bin[:check_bit - 1], bit_value, value_bin[check_bit:])
-    return value_bin
+    check_bits = {}
+    for index, value in enumerate(value_bin, 1):
+        if index in CHECK_BITS:
+            check_bits[index] = int(value)
+    return check_bits
 
 
 def getExcludeCheckBits(value_bin):
@@ -140,7 +140,7 @@ def decode(encoded, fix_errors=True):
 
 if __name__ == '__main__':
     """Основний код, збереження результатів в файл"""
-    with open("sequence.txt", "r") as file:
+    with open("sequence.txt", "r", encoding="utf-8") as file:
         original_sequences = ast.literal_eval(file.read())
         original_sequences = [seq.strip("[]").strip("'") for seq in original_sequences]
     for sequence in original_sequences:
